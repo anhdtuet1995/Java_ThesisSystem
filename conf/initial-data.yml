@@ -1,0 +1,15 @@
+admin:
+
+    - !!models.Admin
+
+        email:  alice@gmail.com
+
+        pass: alice
+
+user:
+
+    - !!models.Student
+
+        email:  nam@gmail.com
+
+        pass: nam

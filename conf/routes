@@ -1,0 +1,36 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+# Home page
+GET     	/                       controllers.Application.index()
+GET           /admin                       controllers.Persons.base()
+GET           /admin/students/              controllers.Persons.list()
+GET           /admin/teachers/            controllers.Persons.list_teacher()
+GET           /admin/students/new           controllers.Persons.newStudent()
+GET           /admin/teachers/new           controllers.Persons.newTeacher()
+GET           /admin/students/:email        controllers.Persons.details(email: models.Student)
+GET           /admin/teachers/:email        controllers.Persons.details_teacher(email: models.Teacher)
+GET             /login        		controllers.Application.login()
+GET			/logout					controllers.Application.logout()
+GET           /user_student/	controllers.Students.base_user()
+
+GET           /user_student/:email	controllers.Students.details(email: models.Student)
+POST          /user_student/             controllers.Students.save()
+
+GET           /user_teacher/:email	controllers.Teachers.details(email: models.Teacher)
+GET           /user_teacher/	controllers.Teachers.base_user_teacher()
+POST          /user_teacher/             controllers.Teachers.save()
+
+POST            /authenticate 				controllers.Application.authenticate()
+DELETE        /admin/students/:email        controllers.Persons.delete(email: String)
+DELETE        /admin/teachers/:email        controllers.Persons.delete_teacher(email: String)
+POST          /admin/students/              controllers.Persons.save()
+POST          /admin/teachers/              controllers.Persons.save_teacher()
+#Change Password
+GET           /security/changepassword                   controllers.Password.changePassword()
+POST          /security/changepassword                   controllers.Password.updatePassword()
+GET           /changepassword/redirect                   controllers.Password.redirectChanngePassword()
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET           /assets/*file           controllers.Assets.at(path="/public", file)
